@@ -132,9 +132,110 @@ body {
   -webkit-font-smoothing: antialiased;
 }
 
+.cursor-trail {
+  position: fixed;
+  inset: 0;
+  z-index: 9;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.cursor-trail.is-active {
+  opacity: 1;
+}
+
+.cursor-trail__canvas {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+@media (hover: none), (pointer: coarse) {
+  .cursor-trail {
+    display: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .cursor-trail {
+    display: none;
+  }
+}
+
+.page-loader {
+  position: fixed;
+  inset: 0;
+  z-index: 10;
+  display: grid;
+  place-items: center;
+  background: var(--bg);
+  transition: opacity 0.55s ease, visibility 0.55s ease;
+}
+
+.page-loader.is-hidden {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+}
+
+.page-loader__content {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  color: var(--text-secondary);
+  font-size: 0.9rem;
+}
+
+.page-loader__spinner {
+  width: 28px;
+  height: 28px;
+  border: 2px solid var(--border);
+  border-top-color: var(--accent);
+  border-right-color: var(--accent);
+  border-radius: 50%;
+  animation: loader-spin 0.85s linear infinite;
+}
+
+.page-loader__dots {
+  display: inline-block;
+  width: 18px;
+  overflow: hidden;
+  vertical-align: bottom;
+  animation: loader-dots 1.2s steps(4, end) infinite;
+}
+
+@keyframes loader-spin {
+  to { transform: rotate(360deg); }
+}
+
+@keyframes loader-dots {
+  0%, 25% { width: 0; }
+  50% { width: 6px; }
+  75%, 100% { width: 12px; }
+}
+
+.reveal {
+  opacity: 0;
+  transform: translateY(24px);
+  transition:
+    opacity 0.75s ease var(--reveal-delay, 0ms),
+    transform 0.75s cubic-bezier(0.22, 1, 0.36, 1) var(--reveal-delay, 0ms);
+}
+
+.reveal.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
 /* Уважаем настройку "уменьшить анимации" в ОС пользователя */
 @media (prefers-reduced-motion: reduce) {
   * { animation: none !important; transition: none !important; }
+
+  .reveal {
+    opacity: 1;
+    transform: none;
+  }
 }
 
 /* Видимый фокус для клавиатурной навигации — важно для доступности */
@@ -286,6 +387,14 @@ button:focus-visible {
   max-width: 60ch; /* ограничиваем длину строки для удобного чтения */
 }
 
+.about__offer {
+  margin-top: 20px;
+  padding-left: 16px;
+  border-left: 2px solid var(--accent);
+  color: var(--text-primary) !important;
+  font-weight: 500;
+}
+
 .about__skills {
   list-style: none;
   display: flex;
@@ -344,6 +453,13 @@ button:focus-visible {
   margin-bottom: 4px;
 }
 
+.project-card__type {
+  color: var(--accent);
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+}
+
 .project-card__title {
   font-family: var(--font-heading);
   font-size: 1.15rem;
@@ -354,6 +470,20 @@ button:focus-visible {
   color: var(--text-secondary);
   font-size: 0.95rem;
   flex-grow: 1; /* растягивается, чтобы ссылка "прилипала" к низу карточки */
+}
+
+.project-card__tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.project-card__tags span {
+  padding: 4px 8px;
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  color: var(--text-secondary);
+  font-size: 0.72rem;
 }
 
 .project-card__link {

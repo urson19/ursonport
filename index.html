@@ -14,6 +14,18 @@
 </head>
 <body>
 
+  <div class="page-loader" aria-hidden="true">
+    <div class="page-loader__content">
+      <span class="page-loader__spinner"></span>
+      <span class="page-loader__text">Загрузка<span class="page-loader__dots">...</span></span>
+    </div>
+  </div>
+  <noscript><style>.page-loader { display: none; }</style></noscript>
+
+  <div class="cursor-trail" aria-hidden="true">
+    <canvas class="cursor-trail__canvas"></canvas>
+  </div>
+
   <!-- Фоновый слой с плавно движущимися размытыми пятнами (чисто CSS-анимация) -->
   <div class="bg-blobs" aria-hidden="true">
     <span class="blob blob--1"></span>
@@ -57,18 +69,24 @@
       <!-- Левая колонка: текст о себе -->
       <div class="about__text">
         <h2 class="section-title" data-ru="Обо мне" data-en="About me">Обо мне</h2>
-        <p data-ru="Я графический дизайнер и сейчас осваиваю веб-разработку, чтобы самому собирать сайты под свои проекты — начиная с этого портфолио. Мне близко мышление дизайнера: композиция, отступы, цвет — и теперь я учусь переносить это в код на HTML, CSS и JavaScript."
+        <p data-ru="Я графический дизайнер и сейчас осваиваю веб-разработку, чтобы создавать цельные проекты — от идеи и визуального стиля до готового сайта. Помогаю бизнесу оформить образ под ключ: разработать логотип, подобрать фирменные цвета и шрифты, а также подготовить оформление профилей и публикаций для социальных сетей."
            data-en="I'm a graphic designer currently learning web development so I can build sites for my own projects — starting with this portfolio. Designer thinking is close to me: composition, spacing, color — and now I'm learning to bring that into code with HTML, CSS and JavaScript.">
-          Я графический дизайнер и сейчас осваиваю веб-разработку, чтобы самому
-          собирать сайты под свои проекты — начиная с этого портфолио. Мне близко
-          мышление дизайнера: композиция, отступы, цвет — и теперь я учусь
-          переносить это в код на HTML, CSS и JavaScript.
+          Я графический дизайнер и сейчас осваиваю веб-разработку, чтобы создавать
+          цельные проекты — от идеи и визуального стиля до готового сайта. Помогаю
+          бизнесу оформить образ под ключ: разработать логотип, подобрать фирменные
+          цвета и шрифты, а также подготовить оформление профилей и публикаций для
+          социальных сетей.
+        </p>
+        <p class="about__offer" data-ru="Для бизнеса могу собрать визуальную упаковку под ключ: логотип, фирменный стиль и оформление профиля в социальных сетях." data-en="For businesses, I can create a complete visual package: a logo, visual identity and social media profile design.">
+          Для бизнеса могу собрать визуальную упаковку под ключ: логотип, фирменный стиль и оформление профиля в социальных сетях.
         </p>
       </div>
 
       <!-- Правая колонка: список навыков -->
       <ul class="about__skills">
         <li data-ru="Разработка макетов и визуального стиля" data-en="Layout and visual style design">Разработка макетов и визуального стиля</li>
+        <li data-ru="Логотип и фирменный стиль для бизнеса" data-en="Logo and visual identity for business">Логотип и фирменный стиль для бизнеса</li>
+        <li data-ru="Оформление социальных сетей под ключ" data-en="Complete social media design">Оформление социальных сетей под ключ</li>
         <li data-ru="Работа с цветом, шрифтами и композицией" data-en="Working with color, type and composition">Работа с цветом, шрифтами и композицией</li>
         <li data-ru="Вёрстка простых сайтов" data-en="Building simple websites">Вёрстка простых сайтов</li>
         <li data-ru="Основы интерактива на сайте" data-en="Basic site interactivity">Основы интерактива на сайте</li>
@@ -88,25 +106,43 @@
         <!-- Карточка проекта №1 -->
         <article class="project-card">
           <div class="project-card__accent"></div>
-          <h3 class="project-card__title" data-ru="Название проекта" data-en="Project name">Название проекта</h3>
-          <p class="project-card__desc" data-ru="Короткое описание того, что делает проект и какие технологии использованы." data-en="A short description of what the project does and which tools were used.">Короткое описание того, что делает проект и какие технологии использованы.</p>
-          <a href="#" class="project-card__link" data-ru="Смотреть проект" data-en="View project">Смотреть проект</a>
+          <p class="project-card__type" data-ru="ЛЕНДИНГ" data-en="LANDING PAGE">ЛЕНДИНГ</p>
+          <h3 class="project-card__title" data-ru="Сайт творческой студии" data-en="Creative studio website">Сайт творческой студии</h3>
+          <p class="project-card__desc" data-ru="Одностраничный сайт с акцентом на крупную типографику, атмосферные цвета и понятный путь пользователя от знакомства до заявки." data-en="A one-page website focused on bold typography, atmospheric colors and a clear path from first impression to contact.">Одностраничный сайт с акцентом на крупную типографику, атмосферные цвета и понятный путь пользователя от знакомства до заявки.</p>
+          <div class="project-card__tags">
+            <span>HTML</span>
+            <span>CSS</span>
+            <span>JavaScript</span>
+          </div>
+          <a href="#contact" class="project-card__link" data-ru="Обсудить проект →" data-en="Discuss project →">Обсудить проект →</a>
         </article>
 
         <!-- Карточка проекта №2 -->
         <article class="project-card">
           <div class="project-card__accent"></div>
-          <h3 class="project-card__title" data-ru="Название проекта" data-en="Project name">Название проекта</h3>
-          <p class="project-card__desc" data-ru="Короткое описание того, что делает проект и какие технологии использованы." data-en="A short description of what the project does and which tools were used.">Короткое описание того, что делает проект и какие технологии использованы.</p>
-          <a href="#" class="project-card__link" data-ru="Смотреть проект" data-en="View project">Смотреть проект</a>
+          <p class="project-card__type" data-ru="АЙДЕНТИКА" data-en="BRAND IDENTITY">АЙДЕНТИКА</p>
+          <h3 class="project-card__title" data-ru="Визуальный стиль кофейни" data-en="Coffee shop visual identity">Визуальный стиль кофейни</h3>
+          <p class="project-card__desc" data-ru="Концепция бренда с тёплой палитрой, системой шрифтов и графическими элементами для упаковки, меню и социальных сетей." data-en="A brand concept with a warm palette, a type system and graphic elements for packaging, menus and social media.">Концепция бренда с тёплой палитрой, системой шрифтов и графическими элементами для упаковки, меню и социальных сетей.</p>
+          <div class="project-card__tags">
+            <span>Figma</span>
+            <span>Branding</span>
+            <span>Art direction</span>
+          </div>
+          <a href="#contact" class="project-card__link" data-ru="Обсудить проект →" data-en="Discuss project →">Обсудить проект →</a>
         </article>
 
         <!-- Карточка проекта №3 -->
         <article class="project-card">
           <div class="project-card__accent"></div>
-          <h3 class="project-card__title" data-ru="Название проекта" data-en="Project name">Название проекта</h3>
-          <p class="project-card__desc" data-ru="Короткое описание того, что делает проект и какие технологии использованы." data-en="A short description of what the project does and which tools were used.">Короткое описание того, что делает проект и какие технологии использованы.</p>
-          <a href="#" class="project-card__link" data-ru="Смотреть проект" data-en="View project">Смотреть проект</a>
+          <p class="project-card__type" data-ru="ИНТЕРАКТИВ" data-en="INTERACTIVE">ИНТЕРАКТИВ</p>
+          <h3 class="project-card__title" data-ru="Галерея постеров" data-en="Poster gallery">Галерея постеров</h3>
+          <p class="project-card__desc" data-ru="Небольшая галерея с фильтрацией работ, плавными переходами и адаптивной сеткой для просмотра на любом экране." data-en="A small gallery with project filters, smooth transitions and a responsive grid for every screen size.">Небольшая галерея с фильтрацией работ, плавными переходами и адаптивной сеткой для просмотра на любом экране.</p>
+          <div class="project-card__tags">
+            <span>UI design</span>
+            <span>Responsive</span>
+            <span>Motion</span>
+          </div>
+          <a href="#contact" class="project-card__link" data-ru="Обсудить проект →" data-en="Discuss project →">Обсудить проект →</a>
         </article>
 
       </div>
